@@ -50,4 +50,17 @@
   }
 }
 
+- (void)setTintColor:(UIColor *)tintColor
+{
+  [super setTintColor:tintColor];
+  if (@available(iOS 13.0, *)) {
+    [self setSelectedSegmentTintColor:tintColor];
+    [self setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}
+                        forState:UIControlStateSelected];
+    [self setTitleTextAttributes:@{NSForegroundColorAttributeName: tintColor}
+                        forState:UIControlStateNormal];
+  }
+}
+
+
 @end
